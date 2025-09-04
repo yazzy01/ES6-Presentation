@@ -35,3 +35,8 @@ When presenting this material to your class:
 ## Created By
 
 [Your Name] and Majd for ES6 JavaScript Presentation
+- Email: rziguiyassir@gmail.com 
+- LinkedIn: [Yassir Rzigui](https://linkedin.com/in/yassir-rzigui) 
+ 
+## License 
+MIT License - Feel free to use this code for learning and development purposes. 
