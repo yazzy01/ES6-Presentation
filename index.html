@@ -3,104 +3,476 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ES6 JavaScript Presentation</title>
+    <title>Modern JavaScript ES6+ Interactive Learning Platform | Yassir Rzigui</title>
+    <meta name="description" content="Master ES6+ JavaScript features with interactive demos, code examples, and practical exercises. Built by Yassir Rzigui.">
+    <meta name="author" content="Yassir Rzigui">
+    <meta name="keywords" content="JavaScript, ES6, ES2015, modern JavaScript, arrow functions, classes, promises, async await, destructuring">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Interactive ES6+ JavaScript Learning Platform">
+    <meta property="og:description" content="Master modern JavaScript with hands-on demos and examples">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yazzy01-es6.vercel.app">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Interactive ES6+ JavaScript Learning Platform">
+    <meta name="twitter:description" content="Master modern JavaScript with hands-on demos and examples">
+    
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
 </head>
 <body>
-    <header>
-        <h1>ES6 JavaScript Features</h1>
-        <p>A beginner's guide to modern JavaScript</p>
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fab fa-js-square"></i>
+                <span>ES6+ Master</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#playground">Playground</a>
+                <a href="#quiz">Quiz</a>
+                <a href="#resources">Resources</a>
+            </div>
+            <div class="nav-mobile">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Master Modern JavaScript</h1>
+                <p class="hero-subtitle">Interactive ES6+ Learning Platform with Live Code Examples</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">ES6 Features</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Code Examples</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Interactive</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('features')">
+                        <i class="fas fa-play"></i>
+                        Start Learning
+                    </button>
+                    <button class="btn btn-outline" onclick="scrollToSection('playground')">
+                        <i class="fas fa-code"></i>
+                        Code Playground
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-preview">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="code-title">modern-javascript.js</span>
+                    </div>
+                    <div class="code-content">
+                        <pre><code class="language-javascript">
+// Modern JavaScript ES6+
+const greeting = (name = 'Developer') => {
+  return `Hello, ${name}! 👋`;
+};
+
+const skills = ['JavaScript', 'ES6+', 'React'];
+const [primary, ...others] = skills;
+
+class Developer {
+  constructor(name) {
+    this.name = name;
+    this.skills = new Set(skills);
+  }
+  
+  async learn(technology) {
+    return new Promise(resolve => {
+      this.skills.add(technology);
+      resolve(`${this.name} learned ${technology}!`);
+    });
+  }
+}
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section class="feature-section">
-            <h2>1. Let and Const Declarations</h2>
-            <p>New ways to declare variables with better scoping rules.</p>
-            <button onclick="runDemo('letConst')">Run Demo</button>
-            <div id="letConst-output" class="output"></div>
-        </section>
+    <!-- Progress Tracker -->
+    <div class="progress-tracker">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <span class="progress-text" id="progress-text">0% Complete</span>
+        </div>
+    </div>
 
-        <section class="feature-section">
-            <h2>2. Arrow Functions</h2>
-            <p>A shorter syntax for writing functions.</p>
-            <button onclick="runDemo('arrowFunctions')">Run Demo</button>
-            <div id="arrowFunctions-output" class="output"></div>
-        </section>
+    <!-- Features Section -->
+    <main id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>ES6+ Features</h2>
+                <p>Master modern JavaScript with interactive examples and explanations</p>
+            </div>
 
-        <section class="feature-section">
-            <h2>3. Template Literals</h2>
-            <p>Enhanced way to work with strings.</p>
-            <button onclick="runDemo('templateLiterals')">Run Demo</button>
-            <div id="templateLiterals-output" class="output"></div>
-        </section>
+            <div class="features-grid">
+                <!-- Feature 1: Let and Const -->
+                <div class="feature-card" data-feature="letConst">
+                    <div class="feature-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Let & Const Declarations</h3>
+                        <p>Block-scoped variable declarations that replace var</p>
+                        <div class="feature-tags">
+                            <span class="tag">ES6</span>
+                            <span class="tag">Variables</span>
+                            <span class="tag">Scope</span>
+                        </div>
+                        <button class="feature-btn" onclick="openFeatureModal('letConst')">
+                            <i class="fas fa-play"></i>
+                            Explore
+                        </button>
+                    </div>
+                </div>
 
-        <section class="feature-section">
-            <h2>4. Default Parameters</h2>
-            <p>Set default values for function parameters.</p>
-            <button onclick="runDemo('defaultParams')">Run Demo</button>
-            <div id="defaultParams-output" class="output"></div>
-        </section>
+                <!-- Feature 2: Arrow Functions -->
+                <div class="feature-card" data-feature="arrowFunctions">
+                    <div class="feature-icon">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Arrow Functions</h3>
+                        <p>Concise function syntax with lexical this binding</p>
+                        <div class="feature-tags">
+                            <span class="tag">ES6</span>
+                            <span class="tag">Functions</span>
+                            <span class="tag">Syntax</span>
+                        </div>
+                        <button class="feature-btn" onclick="openFeatureModal('arrowFunctions')">
+                            <i class="fas fa-play"></i>
+                            Explore
+                        </button>
+                    </div>
+                </div>
 
-        <section class="feature-section">
-            <h2>5. Destructuring</h2>
-            <p>Extract data from arrays and objects easily.</p>
-            <button onclick="runDemo('destructuring')">Run Demo</button>
-            <div id="destructuring-output" class="output"></div>
-        </section>
+                <!-- Feature 3: Template Literals -->
+                <div class="feature-card" data-feature="templateLiterals">
+                    <div class="feature-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Template Literals</h3>
+                        <p>Enhanced string formatting with embedded expressions</p>
+                        <div class="feature-tags">
+                            <span class="tag">ES6</span>
+                            <span class="tag">Strings</span>
+                            <span class="tag">Interpolation</span>
+                        </div>
+                        <button class="feature-btn" onclick="openFeatureModal('templateLiterals')">
+                            <i class="fas fa-play"></i>
+                            Explore
+                        </button>
+                    </div>
+                </div>
 
-        <section class="feature-section">
-            <h2>6. Spread and Rest Operators</h2>
-            <p>Powerful ways to work with arrays and function arguments.</p>
-            <button onclick="runDemo('spreadRest')">Run Demo</button>
-            <div id="spreadRest-output" class="output"></div>
-        </section>
+                <!-- Feature 4: Destructuring -->
+                <div class="feature-card" data-feature="destructuring">
+                    <div class="feature-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Destructuring Assignment</h3>
+                        <p>Extract values from arrays and objects efficiently</p>
+                        <div class="feature-tags">
+                            <span class="tag">ES6</span>
+                            <span class="tag">Arrays</span>
+                            <span class="tag">Objects</span>
+                        </div>
+                        <button class="feature-btn" onclick="openFeatureModal('destructuring')">
+                            <i class="fas fa-play"></i>
+                            Explore
+                        </button>
+                    </div>
+                </div>
 
-        <section class="feature-section">
-            <h2>7. Classes</h2>
-            <p>Object-oriented programming made easier.</p>
-            <button onclick="runDemo('classes')">Run Demo</button>
-            <div id="classes-output" class="output"></div>
-        </section>
+                <!-- Feature 5: Classes -->
+                <div class="feature-card" data-feature="classes">
+                    <div class="feature-icon">
+                        <i class="fas fa-object-group"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>ES6 Classes</h3>
+                        <p>Object-oriented programming with class syntax</p>
+                        <div class="feature-tags">
+                            <span class="tag">ES6</span>
+                            <span class="tag">OOP</span>
+                            <span class="tag">Classes</span>
+                        </div>
+                        <button class="feature-btn" onclick="openFeatureModal('classes')">
+                            <i class="fas fa-play"></i>
+                            Explore
+                        </button>
+                    </div>
+                </div>
 
-        <section class="feature-section">
-            <h2>8. Promises</h2>
-            <p>Better way to handle asynchronous operations.</p>
-            <button onclick="runDemo('promises')">Run Demo</button>
-            <div id="promises-output" class="output"></div>
-        </section>
+                <!-- Feature 6: Promises -->
+                <div class="feature-card" data-feature="promises">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Promises & Async/Await</h3>
+                        <p>Handle asynchronous operations elegantly</p>
+                        <div class="feature-tags">
+                            <span class="tag">ES6</span>
+                            <span class="tag">Async</span>
+                            <span class="tag">Promises</span>
+                        </div>
+                        <button class="feature-btn" onclick="openFeatureModal('promises')">
+                            <i class="fas fa-play"></i>
+                            Explore
+                        </button>
+                    </div>
+                </div>
 
-        <section class="feature-section">
-            <h2>9. Modules</h2>
-            <p>Organize code into reusable pieces.</p>
-            <button onclick="runDemo('modules')">Run Demo</button>
-            <div id="modules-output" class="output"></div>
-        </section>
+                <!-- Feature 7: Modules -->
+                <div class="feature-card" data-feature="modules">
+                    <div class="feature-icon">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>ES6 Modules</h3>
+                        <p>Import and export functionality between files</p>
+                        <div class="feature-tags">
+                            <span class="tag">ES6</span>
+                            <span class="tag">Modules</span>
+                            <span class="tag">Import</span>
+                        </div>
+                        <button class="feature-btn" onclick="openFeatureModal('modules')">
+                            <i class="fas fa-play"></i>
+                            Explore
+                        </button>
+                    </div>
+                </div>
 
-        <section class="feature-section">
-            <h2>10. Map and Set</h2>
-            <p>New data structures for specific use cases.</p>
-            <button onclick="runDemo('mapSet')">Run Demo</button>
-            <div id="mapSet-output" class="output"></div>
-        </section>
+                <!-- Feature 8: Spread/Rest -->
+                <div class="feature-card" data-feature="spreadRest">
+                    <div class="feature-icon">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Spread & Rest Operators</h3>
+                        <p>Flexible ways to handle arrays and function parameters</p>
+                        <div class="feature-tags">
+                            <span class="tag">ES6</span>
+                            <span class="tag">Operators</span>
+                            <span class="tag">Arrays</span>
+                        </div>
+                        <button class="feature-btn" onclick="openFeatureModal('spreadRest')">
+                            <i class="fas fa-play"></i>
+                            Explore
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <p>Created by [Your Name] and Majd for ES6 Presentation</p>
+    <!-- Interactive Playground -->
+    <section id="playground" class="playground-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>JavaScript Playground</h2>
+                <p>Write and test modern JavaScript code in real-time</p>
+            </div>
+            
+            <div class="playground-container">
+                <div class="editor-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-code"></i> JavaScript Editor</h3>
+                        <div class="editor-controls">
+                            <button class="btn-small" onclick="runCode()">
+                                <i class="fas fa-play"></i> Run
+                            </button>
+                            <button class="btn-small" onclick="clearEditor()">
+                                <i class="fas fa-trash"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="code-editor" class="code-editor" placeholder="// Write your ES6+ JavaScript code here...
+const greeting = (name) => `Hello, ${name}!`;
+console.log(greeting('Developer'));"></textarea>
+                </div>
+                
+                <div class="output-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-terminal"></i> Output</h3>
+                        <button class="btn-small" onclick="clearOutput()">
+                            <i class="fas fa-broom"></i> Clear
+                        </button>
+                    </div>
+                    <div id="code-output" class="code-output">
+                        <div class="output-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Run your code to see the output here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Resources -->
+    <section id="resources" class="resources-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Learning Resources</h2>
+                <p>Additional materials to master modern JavaScript</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>MDN Documentation</h3>
+                    <p>Comprehensive JavaScript reference and guides</p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="resource-link">
+                        Visit MDN <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>Source Code</h3>
+                    <p>View and contribute to this learning platform</p>
+                    <a href="https://github.com/yazzy01/ES6-Presentation" target="_blank" class="resource-link">
+                        View on GitHub <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Practice Exercises</h3>
+                    <p>Hands-on coding challenges and solutions</p>
+                    <a href="#" class="resource-link">
+                        Coming Soon <i class="fas fa-hourglass-half"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ES6+ Learning Platform</h3>
+                    <p>Master modern JavaScript with interactive examples and comprehensive explanations.</p>
+                    <div class="social-links">
+                        <a href="mailto:rziguiyassir@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://linkedin.com/in/yassir-rzigui"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/yazzy01"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features">ES6 Features</a></li>
+                        <li><a href="#playground">Code Playground</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="https://github.com/yazzy01">GitHub Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Technologies</h3>
+                    <ul>
+                        <li>JavaScript ES6+</li>
+                        <li>Modern CSS</li>
+                        <li>Interactive Demos</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Yassir Rzigui - Full-Stack Developer & JavaScript Educator</p>
+                <p>Built with ❤️ for the JavaScript community</p>
+            </div>
+        </div>
     </footer>
 
-    <!-- Main script -->
+    <!-- Feature Modal -->
+    <div id="feature-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Feature Title</h2>
+                <button class="modal-close" onclick="closeFeatureModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-description" id="modal-description">
+                    <!-- Feature description will be inserted here -->
+                </div>
+                <div class="modal-demo">
+                    <div class="demo-code">
+                        <h4>Code Example</h4>
+                        <pre><code id="demo-code" class="language-javascript">
+                            <!-- Code example will be inserted here -->
+                        </code></pre>
+                    </div>
+                    <div class="demo-output">
+                        <h4>Output</h4>
+                        <div id="demo-output" class="output-display">
+                            <!-- Output will be shown here -->
+                        </div>
+                        <button class="btn btn-primary" onclick="runFeatureDemo()">
+                            <i class="fas fa-play"></i>
+                            Run Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script src="main.js"></script>
-    
-    <!-- Feature scripts -->
-    <script src="features/1-letConst.js"></script>
-    <script src="features/2-arrowFunctions.js"></script>
-    <script src="features/3-templateLiterals.js"></script>
-    <script src="features/4-defaultParams.js"></script>
-    <script src="features/5-destructuring.js"></script>
-    <script src="features/6-spreadRest.js"></script>
-    <script src="features/7-classes.js"></script>
-    <script src="features/8-promises.js"></script>
-    <script src="features/9-modules.js"></script>
-    <script src="features/10-mapSet.js"></script>
+    <script src="features.js"></script>
+    <script src="playground.js"></script>
+    <script src="theme.js"></script>
 </body>
 </html>
